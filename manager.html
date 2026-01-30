@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard - SSTU Guest House Meal Manager</title>
+
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.svg">
+    
+    <link rel="manifest" href="manifest.json">
+    
+    <meta name="theme-color" content="#0EA5E9">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <header class="mobile-header">
+            <button class="sidebar-toggle" id="mobileSidebarToggle" aria-label="Toggle sidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <h1 id="mobileSectionTitle">Overview</h1>
+            <button class="mobile-logout-btn" id="mobileLogoutBtn" aria-label="Logout">
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </span>
+            </button>
+        </header>
+
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h2>
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </span>
+                    SSTU Guest House
+                </h2>
+                <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">M</div>
+                <div>
+                    <h4 id="userName">Manager</h4>
+                    <span class="badge badge-manager">manager</span>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <li><a href="#" data-section="overview" class="nav-link active">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                    </span>
+                    Overview
+                </a></li>
+                <li><a href="#" data-section="users" class="nav-link">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </span>
+                    Users
+                </a></li>
+                <li><a href="#" data-section="costs" class="nav-link">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </span>
+                    Costs
+                </a></li>
+                <li><a href="#" data-section="deposits" class="nav-link">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                            <line x1="1" y1="10" x2="23" y2="10"></line>
+                        </svg>
+                    </span>
+                    Deposits
+                </a></li>
+                <li><a href="#" data-section="meals" class="nav-link">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                        </svg>
+                    </span>
+                    Meals
+                </a></li>
+                <li><a href="#" data-section="settings" class="nav-link">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                    </span>
+                    Settings
+                </a></li>
+            </nav>
+
+            <button class="btn btn-primary logout-btn" id="logoutBtn">
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </span>
+                Logout
+            </button>
+        </aside>
+
+        <main class="main-content">
+            <div class="main-content-wrapper">
+                <div class="content-header">
+                    <h1 id="sectionTitle">Overview</h1>
+                    <div class="header-actions">
+                        <span class="current-month" id="currentMonth">Loading...</span>
+                    </div>
+                </div>
+
+                <section id="overviewSection" class="content-section active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Total Users</h3>
+                                <p class="stat-value" id="totalUsers">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Mess Balance</h3>
+                                <p class="stat-value" id="messBalance">৳0.00</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Total Deposit</h3>
+                                <p class="stat-value" id="totalDeposit">৳0.00</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Total Meals</h3>
+                                <p class="stat-value" id="messTotalMeal">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Meal Rate</h3>
+                                <p class="stat-value" id="mealRate">৳0.00</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Total Meal Cost</h3>
+                                <p class="stat-value" id="totalMealCost">৳0.00</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Other Costs</h3>
+                                <p class="stat-value" id="totalOtherCosts">৳0.00</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Total Cost</h3>
+                                <p class="stat-value" id="totalCost">৳0.00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="charts-grid">
+                        <div class="card">
+                            <h2>Cost Breakdown</h2>
+                            <div class="chart-container">
+                                <canvas id="costBreakdownChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h2>Meals Per User</h2>
+                            <div class="chart-container">
+                                <canvas id="mealsPerUserChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>Monthly Summary</h2>
+                        <div class="table-responsive">
+                            <table class="data-table" id="summaryTable">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>User Name</th>
+                                        <th>Total Meals</th>
+                                        <th>Meal Cost</th>
+                                        <th>Shared Cost</th>
+                                        <th>Individual Cost</th>
+                                        <th>Total Deposit</th>
+                                        <th>Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="8" style="text-align: center; padding: 2rem;">Loading data...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="usersSection" class="content-section">
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="addUserBtn">
+                            <span class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </span>
+                            Add User
+                        </button>
+                    </div>
+                    <div class="card">
+                        <h2>All Users</h2>
+                        <div class="table-responsive">
+                            <table class="data-table" id="usersTable">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Status</th> <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="6" style="text-align: center; padding: 2rem;">Loading users...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="costsSection" class="content-section">
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="addMarketCostBtn">Add Market Cost</button>
+                        <button class="btn btn-secondary" id="addSharedCostBtn">Add Shared Cost</button>
+                        <button class="btn btn-secondary" id="addIndividualCostBtn">Add Individual Cost</button>
+                    </div>
+                    <div class="card">
+                        <h2>All Costs</h2>
+                        <div class="table-responsive">
+                            <table class="data-table" id="costsTable">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Date</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                        <th>Amount</th>
+                                        <th>User</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="7" style="text-align: center; padding: 2rem;">Loading costs...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="depositsSection" class="content-section">
+                    <div class="section-actions">
+                        <button class="btn btn-primary" id="addDepositBtn">Add Deposit</button>
+                    </div>
+                    <div class="card">
+                        <h2>User Deposits</h2>
+                        <div class="table-responsive">
+                            <table class="data-table" id="depositsTable">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>User Name</th>
+                                        <th>Description</th> 
+                                        <th>Amount</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="6" style="text-align: center; padding: 2rem;">Loading deposits...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="mealsSection" class="content-section">
+                    <div class="card">
+                        <h2>Track Meals by Date</h2>
+                        <div class="meal-filter">
+                            <div class="form-group">
+                                <label for="mealTrackingDate">Select Date</label>
+                                <input type="date" id="mealTrackingDate" value="">
+                            </div>
+                            <button class="btn btn-primary" id="filterMealsBtn">View Meals</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table" id="mealTrackingTable">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>User Name</th>
+                                        <th>Breakfast</th>
+                                        <th>Lunch</th>
+                                        <th>Dinner</th>
+                                        <th>Total Meals</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="6" style="text-align: center; padding: 2rem;">Select a date to view meals</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2 id="todayMealsTitle">Edit Today's Meals</h2>
+                        <div class="table-responsive" id="todayMealsContainer">
+                            <table class="data-table" id="todayMealTrackingTable">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>User Name</th>
+                                        <th>Breakfast</th>
+                                        <th>Lunch</th>
+                                        <th>Dinner</th>
+                                        <th>Total Meals</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="6" style="text-align: center; padding: 2rem;">Loading meal editor...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="settingsSection" class="content-section">
+                    <div class="card">
+                        <h2>Default Meal Settings</h2>
+                        <form id="defaultMealsForm">
+                            <p style="color: var(--text-secondary); margin-bottom: 16px;">Set default meal values:</p>
+                            <div class="form-group">
+                                <label for="defaultBreakfast">Default Breakfast</label>
+                                <input type="number" step="0.5" id="defaultBreakfast" value="0.5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="defaultLunch">Default Lunch</label>
+                                <input type="number" step="0.5" id="defaultLunch" value="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="defaultDinner">Default Dinner</label>
+                                <input type="number" step="0.5" id="defaultDinner" value="1" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Settings</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+
+            <footer class="page-footer">
+                &copy; 2025 SSTU Guest House Meal Manager. All rights reserved. <br>
+                Developed by <a href="https://facebook.com/kawsarafat" target="_blank" rel="noopener noreferrer">Kawsar Arafat</a>.
+            </footer>
+        </main>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+    <div id="modalContainer"></div>
+
+    <script type="module">
+        import './firebase-config.js';
+        
+        setTimeout(() => {
+            const managerScript = document.createElement('script');
+            managerScript.type = 'module';
+            managerScript.src = 'manager.js';
+            document.body.appendChild(managerScript);
+        }, 100);
+    </script>
+</body>
+</html>

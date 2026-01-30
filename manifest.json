@@ -1,0 +1,16 @@
+{
+  "name": "SSTU Guest House Meal Manager",
+  "short_name": "Guest House",
+  "description": "Manage meals, deposits, and finances for SSTU Guest House.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#F0F9FF",
+  "theme_color": "#0EA5E9",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

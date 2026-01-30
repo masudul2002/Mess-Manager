@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - SSTU Guest House Meal Manager</title>
+
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.svg">
+    
+    <link rel="manifest" href="manifest.json">
+    
+    <meta name="theme-color" content="#0EA5E9">
+
+    <link rel="stylesheet" href="styles.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header class="mobile-header">
+            <button class="sidebar-toggle" id="mobileSidebarToggle" aria-label="Toggle sidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <h1 id="mobileSectionTitle">Dashboard</h1>
+            <button class="mobile-logout-btn" id="mobileLogoutBtn" aria-label="Logout">
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </span>
+            </button>
+        </header>
+
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h2>
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </span>
+                    SSTU Guest House
+                </h2>
+                <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <div>
+                    <h4 id="userName">User</h4>
+                    <span class="badge badge-user">border</span>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <li><a href="#" data-section="dashboard" class="nav-link active">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                    </span>
+                    Dashboard
+                </a></li>
+                <li><a href="#" data-section="meals" class="nav-link">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                    </span>
+                    My Meals
+                </a></li>
+                <li><a href="#" data-section="deposits" class="nav-link">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                            <line x1="1" y1="10" x2="23" y2="10"></line>
+                        </svg>
+                    </span>
+                    My Deposits
+                </a></li>
+                <li><a href="#" data-section="settings" class="nav-link">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                    </span>
+                    Settings
+                </a></li>
+            </nav>
+
+            <button class="btn btn-primary logout-btn" id="logoutBtn">
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </span>
+                Logout
+            </button>
+        </aside>
+
+        <main class="main-content">
+            <div class="main-content-wrapper">
+                <div class="content-header">
+                    <h1 id="sectionTitle">Dashboard</h1>
+                    <div class="header-actions">
+                        <span class="current-month" id="currentMonth">Loading...</span>
+                    </div>
+                </div>
+
+                <section id="dashboardSection" class="content-section active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3>My Total Meals</h3>
+                                <p class="stat-value" id="myTotalMeals">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3>My Total Deposit</h3>
+                                <p class="stat-value" id="myTotalDeposit">৳0.00</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3>My Balance</h3>
+                                <p class="stat-value" id="myBalance">৳0.00</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3>My Meal Cost</h3>
+                                <p class="stat-value" id="myMealCost">৳0.00</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Mess Balance</h3>
+                                <p class="stat-value" id="messBalance">৳0.00</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Mess Total Deposit</h3>
+                                <p class="stat-value" id="totalDeposit">৳0.00</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                    <polyline points="17 6 23 6 23 12"></polyline>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Meal Rate</h3>
+                                <p class="stat-value" id="mealRate">৳0.00</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3>My Total Cost</h3>
+                                <p class="stat-value" id="myTotalCost">৳0.00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>Cost Breakdown</h2>
+                        <div class="cost-breakdown">
+                            <div class="cost-item">
+                                <span>Meal Cost</span>
+                                <span id="myMealCostBreakdown">৳0.00</span>
+                            </div>
+                            <div class="cost-item">
+                                <span>Shared Cost</span>
+                                <span id="mySharedCost">৳0.00</span>
+                            </div>
+                            <div class="cost-item">
+                                <span>Individual Cost</span>
+                                <span id="myIndividualCost">৳0.00</span>
+                            </div>
+                            <div class="cost-item total">
+                                <span>Total Cost</span>
+                                <span id="myTotalCostBreakdown">৳0.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>Monthly Summary</h2>
+                        <div class="table-responsive">
+                            <table class="data-table" id="summaryTable">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>User Name</th>
+                                        <th>Total Meals</th>
+                                        <th>Meal Cost</th>
+                                        <th>Shared Cost</th>
+                                        <th>Individual Cost</th>
+                                        <th>Total Deposit</th>
+                                        <th>Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="8" style="text-align: center; padding: 2rem;">Loading data...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section id="mealsSection" class="content-section">
+                    <div class="card">
+                        <h2>My Meal Calendar</h2>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 16px;">
+                            Shows all meals entered by the manager for this month.
+                        </p>
+                        <div id="mealCalendar" class="calendar-grid">
+                            <p class="empty-state">Loading meal calendar...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="depositsSection" class="content-section">
+                    <div class="card">
+                        <h2>My Deposits</h2>
+                        <div class="table-responsive">
+                            <table class="data-table" id="depositsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Description</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3" style="text-align: center; padding: 2rem;">Loading deposits...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="settingsSection" class="content-section">
+                    <div class="card">
+                        <h2>My Meal Settings</h2>
+                        <form id="userMealsForm">
+                            <p style="color: var(--text-secondary); margin-bottom: 16px;">
+                                Set your default meal values:
+                            </p>
+                            <div class="form-group">
+                                <label for="userDefaultBreakfast">Default Breakfast</label>
+                                <input type="number" step="0.5" id="userDefaultBreakfast" value="0.5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="userDefaultLunch">Default Lunch</label>
+                                <input type="number" step="0.5" id="userDefaultLunch" value="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="userDefaultDinner">Default Dinner</label>
+                                <input type="number" step="0.5" id="userDefaultDinner" value="1" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                        <polyline points="7 3 7 8 15 8"></polyline>
+                                    </svg>
+                                </span>
+                                Save My Settings
+                            </button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+
+            <footer class="page-footer">
+                &copy; 2025 SSTU Guest House Meal Manager. All rights reserved. <br>
+                Developed by <a href="https://facebook.com/kawsarafat" target="_blank" rel="noopener noreferrer">Kawsar Arafat</a>.
+            </footer>
+        </main>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+    <div id="modalContainer"></div>
+
+    <script type="module">
+        import './firebase-config.js';
+        
+        setTimeout(() => {
+            const userScript = document.createElement('script');
+            userScript.type = 'module';
+            userScript.src = 'user.js';
+            document.body.appendChild(userScript);
+        }, 100);
+    </script>
+</body>
+</html>
