@@ -5,15 +5,15 @@ import { initializeApp, deleteApp } from "https://www.gstatic.com/firebasejs/10.
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// Your Firebase Configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCdJ8RtMIQFyOSl-5vKHPZa_pXRUr356wt",
-  authDomain: "sstu-afafouse.firebaseapp.com",
-  projectId: "sstu-gefav-house",
-  storageBucket: "sstu-gfafafse.firebasestorage.app",
-  messagingSenderId: "93sffafaf57",
-  appId: "1:935427308657:web:e5748c53afawr5f5cafd0",
-  measurementId: "G-MDSKHKQ"
+  apiKey: "AIzaSyAwiOnxdYs_dEGM9Ld1C3b56RzLTREVnx0",
+  authDomain: "mill-maganer.firebaseapp.com",
+  projectId: "mill-maganer",
+  storageBucket: "mill-maganer.firebasestorage.app",
+  messagingSenderId: "519852032219",
+  appId: "1:519852032219:web:76885b039414ede0fbccfe",
+  measurementId: "G-5PSNDE3VNC"
 };
 
 // Initialize Firebase ONCE (Main App)
